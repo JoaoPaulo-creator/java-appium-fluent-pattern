@@ -4,7 +4,7 @@ package setupTeste;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
-
+import io.github.cdimascio.dotenv.Dotenv;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -13,18 +13,24 @@ import io.appium.java_client.android.AndroidDriver;
 
 public abstract class ConfiguracoesDoTeste {
 
-    protected AndroidDriver<MobileElement> driver;    
+    protected AndroidDriver<MobileElement> driver;
+
+    
+    Dotenv dotEnv = Dotenv.configure().load();
+    private String USER_NAME = dotEnv.get("USER_NAME");
+    private String USER_PSW = dotEnv.get("USER_PSW");
+    private String BS_HASH_APP = dotEnv.get("LINK_APP");
 
     @BeforeTest    
     public void setup(){
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("deviceName", "emulator-5554");
-        desiredCapabilities.setCapability("automationName", "uiautomator2");
-        desiredCapabilities.setCapability("app", "C:\\Users\\joaog\\cursoAppium\\src\\main\\resources\\CTAppium_1_2.apk");        
+        desiredCapabilities.setCapability("device", "Samsung Galaxy S8 Plus");
+        desiredCapabilities.setCapability("os_version", "7.0");        
+        desiredCapabilities.setCapability("app", BS_HASH_APP);
+        desiredCapabilities.setCapability("browserstack.idleTimeout", "15");
 
         try {
-            driver = new AndroidDriver<MobileElement>(new URL("http://localhost:4723/wd/hub"), desiredCapabilities);            
+            driver = new AndroidDriver<MobileElement>(new URL("https://"+ USER_NAME +":" + USER_PSW + "@hub-cloud.browserstack.com/wd/hub"), desiredCapabilities);            
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -33,8 +39,8 @@ public abstract class ConfiguracoesDoTeste {
     }
 
     @AfterTest(alwaysRun = true)
-    public void killDriver(){       
-        driver.close();        
-    }   
+    public void killDriver(){
+        driver.quit();
+    }
     
 }
