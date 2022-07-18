@@ -14,17 +14,25 @@ public class CadastroFormulario extends BasePage{
     @AndroidFindBy(className = "android.widget.EditText")
     MobileElement campoNome;
 
-    public void escreverNome(String nome){
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='SALVAR']")
+    MobileElement btnSalvar;
+
+    public CadastroFormulario escreverNome(String nome){
         try {
             aguardarElementoAparecer(campoNome);
             escrever(campoNome, nome);            
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return this;
     }
 
-
-
-
+    public void clicarBtnSalvar(){
+        try {
+            clicar(btnSalvar);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
 }

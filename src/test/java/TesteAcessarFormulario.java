@@ -10,7 +10,8 @@ public class TesteAcessarFormulario extends ConfiguracoesDoTeste{
     public void deveAcessarFormulario(String nomeUsuario){
         TelaInicial telaInicial = new TelaInicial(driver);
         telaInicial.clicarFormulario()
-                .escreverNome(nomeUsuario);
+                .escreverNome(nomeUsuario)
+                .clicarBtnSalvar();
     }
 
     @DataProvider
