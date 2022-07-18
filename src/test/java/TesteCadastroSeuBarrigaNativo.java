@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import pages.TelaInicial;
 import setupTeste.ConfiguracoesDoTeste;
 
-public class TesteCadstroSeuBarrigaNativo extends ConfiguracoesDoTeste{
+public class TesteCadastroSeuBarrigaNativo extends ConfiguracoesDoTeste{
 
     @Test(dataProvider = "informarDadosCadastro")
     public void deveCadastrarEmSeuBarrigaNativo(String nome, String senha){
