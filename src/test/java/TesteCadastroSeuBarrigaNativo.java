@@ -3,14 +3,14 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
-import pages.TelaInicial;
+import pages.TelaInicialPage;
 import setupTeste.ConfiguracoesDoTeste;
 
 public class TesteCadastroSeuBarrigaNativo extends ConfiguracoesDoTeste{
 
     @Test(dataProvider = "informarDadosCadastro")
     public void deveCadastrarEmSeuBarrigaNativo(String nome, String senha){
-        TelaInicial telaInicial = new TelaInicial(driver);
+        TelaInicialPage telaInicial = new TelaInicialPage(driver);
         
         String validarLogin = telaInicial.clicarEmSeuBarrigaNativo()
             .escreverNomeUsuario(nome)

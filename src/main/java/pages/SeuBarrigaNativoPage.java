@@ -7,9 +7,9 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import utils.BasePage;
 
-public class SeuBarrigaNativo extends BasePage{
+public class SeuBarrigaNativoPage extends BasePage{
 
-    public SeuBarrigaNativo(AndroidDriver<MobileElement> driver2) {
+    public SeuBarrigaNativoPage(AndroidDriver<MobileElement> driver2) {
         super(driver2);     
     }
 
@@ -25,7 +25,7 @@ public class SeuBarrigaNativo extends BasePage{
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='ENTRAR']")
     MobileElement btnEntrar;
 
-    public SeuBarrigaNativo escreverNomeUsuario(String nome){
+    public SeuBarrigaNativoPage escreverNomeUsuario(String nome){
         try {
             aguardarElementoAparecer(campoNome);
             escrever(campoNome, nome);    
@@ -35,12 +35,12 @@ public class SeuBarrigaNativo extends BasePage{
         return this;
     }
 
-    public SeuBarrigaNativo escreverSenhaUsuario(String senha){
+    public SeuBarrigaNativoPage escreverSenhaUsuario(String senha){
         escrever(campoSenha, senha);
         return this;
     }
 
-    public SeuBarrigaNativo clicarBtnEntrar(){
+    public SeuBarrigaNativoPage clicarBtnEntrar(){
         clicar(btnEntrar);
         return this;
     }

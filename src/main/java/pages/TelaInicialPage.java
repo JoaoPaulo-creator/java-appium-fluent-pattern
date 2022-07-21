@@ -6,9 +6,9 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import utils.BasePage;
 
-public class TelaInicial extends BasePage{
+public class TelaInicialPage extends BasePage{
 
-    public TelaInicial(AndroidDriver<MobileElement> driver) {
+    public TelaInicialPage(AndroidDriver<MobileElement> driver) {
         super(driver);     
     }
 
@@ -18,7 +18,7 @@ public class TelaInicial extends BasePage{
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='SeuBarriga Nativo']")
     MobileElement seuBarrigaNativo;
 
-    public CadastroFormulario clicarFormulario()    {
+    public CadastroFormularioPage clicarFormulario()    {
       try {
         aguardarElementoAparecer(formulario);
         clicar(formulario);
@@ -26,17 +26,17 @@ public class TelaInicial extends BasePage{
         System.out.println("Erro: " +e.getMessage());
       } 
 
-      return new CadastroFormulario(driver);
+      return new CadastroFormularioPage(driver);
     }
 
-    public SeuBarrigaNativo clicarEmSeuBarrigaNativo(){
+    public SeuBarrigaNativoPage clicarEmSeuBarrigaNativo(){
       try {
         aguardarElementoAparecer(seuBarrigaNativo);
         clicar(seuBarrigaNativo);
       } catch (Exception e) {
         e.printStackTrace();
       }
-      return new SeuBarrigaNativo(driver);
+      return new SeuBarrigaNativoPage(driver);
     }
 
     

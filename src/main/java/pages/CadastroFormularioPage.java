@@ -5,10 +5,10 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import utils.BasePage;
 
-public class CadastroFormulario extends BasePage{
+public class CadastroFormularioPage extends BasePage{
 
-    public CadastroFormulario(AndroidDriver<MobileElement> driver) {
-        super(driver);             
+    public CadastroFormularioPage(AndroidDriver<MobileElement> driver) {
+        super(driver);
     }
 
     @AndroidFindBy(className = "android.widget.EditText")
@@ -17,7 +17,7 @@ public class CadastroFormulario extends BasePage{
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='SALVAR']")
     MobileElement btnSalvar;
 
-    public CadastroFormulario escreverNome(String nome){
+    public CadastroFormularioPage escreverNome(String nome){
         try {
             aguardarElementoAparecer(campoNome);
             escrever(campoNome, nome);            
